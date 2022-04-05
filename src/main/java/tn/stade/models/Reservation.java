@@ -1,23 +1,25 @@
 package tn.stade.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.Objects;
 
 @Entity
-@AllArgsConstructor
 public class Reservation {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @EmbeddedId
+    private ReservationsPk id;
 
-    @Temporal(TemporalType.DATE)
-    private Date dateCreation= new Date();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("domicileId")
+    private Equipe domicile;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("exterieurId")
+    private Equipe exterieur;
+
 
     private LocalDateTime dateDebut;
 
@@ -40,11 +42,47 @@ public class Reservation {
     @JoinColumn(name = "stade_id")
     private Stade stade;
 
+    public Stade getStade() {
+        return stade;
+    }
+
+    public void setStade(Stade stade) {
+        this.stade = stade;
+    }
+
+    public Reservation(){};
+    public Reservation(Equipe equipe, Equipe equipe1){};
+
+    public Reservation(Equipe domicile , Equipe exterieur , LocalDateTime dateDebut,LocalDateTime dateFin,Integer miTemps,Integer pause,Integer prolongation,Integer score,Integer scoreAdv,String etat){
+        this.domicile = domicile;
+        this.exterieur = exterieur;
+        this.dateDebut=dateDebut;
+        this.dateFin=dateFin;
+        this.miTemps=miTemps;
+        this.pause=pause;
+        this.prolongation=prolongation;
+        this.score=score;
+        this.scoreAdv=scoreAdv;
+        this.etat=etat;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Reservation that = (Reservation) o;
+        return Objects.equals(domicile, that.domicile) &&
+                Objects.equals(exterieur, that.exterieur);
+    }
+
     @Override
     public String toString() {
         return "Reservation{" +
                 "id=" + id +
-                ", dateCreation=" + dateCreation +
+                ", domicile=" + domicile +
+                ", exterieur=" + exterieur +
                 ", dateDebut=" + dateDebut +
                 ", dateFin=" + dateFin +
                 ", miTemps=" + miTemps +
@@ -57,42 +95,17 @@ public class Reservation {
                 '}';
     }
 
-    public Stade getStade() {
-        return stade;
+    @Override
+    public int hashCode() {
+        return Objects.hash(domicile, exterieur);
     }
 
-    public void setStade(Stade stade) {
-        this.stade = stade;
-    }
-
-    public Reservation(){};
-
-    public Reservation(Date dateCreation, LocalDateTime dateDebut,LocalDateTime dateFin,Integer miTemps,Integer pause,Integer prolongation,Integer score,Integer scoreAdv,String etat){
-        this.dateCreation = dateCreation;
-        this.dateDebut=dateDebut;
-        this.dateFin=dateFin;
-        this.miTemps=miTemps;
-        this.pause=pause;
-        this.prolongation=prolongation;
-        this.score=score;
-        this.scoreAdv=scoreAdv;
-        this.etat=etat;
-    }
-
-    public Long getId() {
+    public ReservationsPk getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(ReservationsPk id) {
         this.id = id;
-    }
-
-    public Date getDateCreation() {
-        return dateCreation;
-    }
-
-    public void setDateCreation(Date dateCreation) {
-        this.dateCreation = dateCreation;
     }
 
     public LocalDateTime getDateDebut() {
@@ -159,4 +172,19 @@ public class Reservation {
         this.etat = etat;
     }
 
+    public Equipe getDomicile() {
+        return domicile;
+    }
+
+    public void setDomicile(Equipe domicile) {
+        this.domicile = domicile;
+    }
+
+    public Equipe getExterieur() {
+        return exterieur;
+    }
+
+    public void setExterieur(Equipe exterieur) {
+        this.exterieur = exterieur;
+    }
 }

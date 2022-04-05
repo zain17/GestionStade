@@ -15,6 +15,9 @@
     <description>gestionstade</description>
     <properties>
         <java.version>11</java.version>
+        <property name="hibernate.cache.use_second_level_cache" value="true"/>
+        <property name="hibernate.cache.region.factory_class"
+                  value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
     </properties>
     <dependencies>
         <dependency>
@@ -44,6 +47,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>5.2.2.Final</version>
         </dependency>
     </dependencies>
 

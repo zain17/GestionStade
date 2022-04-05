@@ -34,7 +34,6 @@ public class ReservationController {
         if (existantReservation == null){
             new ResourceNotFoundException("reservation not found for the id :" + reservationId);
         }else {
-            existantReservation.setDateCreation(reservation.getDateCreation());
             existantReservation.setDateDebut(reservation.getDateDebut());
             existantReservation.setDateFin(reservation.getDateFin());
             existantReservation.setMiTemps(reservation.getMiTemps());
