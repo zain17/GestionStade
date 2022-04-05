@@ -25,7 +25,6 @@ public class Stade {
 
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "reservations", referencedColumnName = "id")
     private List<Reservation> reservationsList;
 
     public Stade() {
