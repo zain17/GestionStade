@@ -1,8 +1,9 @@
 package tn.stade.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -11,8 +12,9 @@ import java.util.List;
 
 @Entity
 @AllArgsConstructor
+@Getter
+@Setter
 public class Stade {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -22,14 +24,17 @@ public class Stade {
     private String reference;
 
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "reservations",referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "reservations", referencedColumnName = "id")
     private List<Reservation> reservationsList;
 
-    public Stade(){};
+    public Stade() {
+    }
+
+    ;
 
 
-    public Stade(String reference){
+    public Stade(String reference) {
         this.reference = reference;
     }
 
