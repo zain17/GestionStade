@@ -19,7 +19,7 @@ public class Auth {
         String prenom = "test";
         int tel = 55555555;
         String email = "test@test.com";
-        String img = "src/main/resources/static/avatar.png";
+        String img = "src/main/resources/static/images/avatar.png";
 
         String user_role = "USER_ROLE";
         List<Authenticity> roles = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Auth {
         String prenom = "test";
         int tel = 55555555;
         String email = "test@test.com";
-        String img = "src/main/resources/static/avatar.png";
+        String img = "src/main/resources/static/images/avatar.png";
         String user_role = "USER_ROLE";
         String capitaine_role = "CAPITAINE_ROLE";
 
@@ -56,7 +56,7 @@ public class Auth {
         String prenom = "test";
         int tel = 55555555;
         String email = "test@test.com";
-        String img = "src/main/resources/static/avatar.png";
+        String img = "src/main/resources/static/images/avatar.png";
         String user_role = "USER_ROLE";
         String capitaine_role = "CAPITAINE_ROLE";
         String arbitre_role = "ARBITRE_ROLE";
@@ -78,7 +78,7 @@ public class Auth {
         String prenom = "test";
         int tel = 55555555;
         String email = "test@test.com";
-        String img = "src/main/resources/static/avatar.png";
+        String img = "src/main/resources/static/images/avatar.png";
         String user_role = "USER_ROLE";
         String capitaine_role = "CAPITAINE_ROLE";
         String arbitre_role = "ARBITRE_ROLE";
