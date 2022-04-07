@@ -1,9 +1,9 @@
-package tn.stade.controller;
+package tn.stade.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tn.stade.exception.ResourceNotFoundException;
+import tn.stade.exceptions.ResourceNotFoundException;
 import tn.stade.models.Stade;
 import tn.stade.services.StadeService;
 
