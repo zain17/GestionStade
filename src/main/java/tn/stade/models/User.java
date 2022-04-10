@@ -37,6 +37,9 @@ public class User {
     @OneToMany(fetch = FetchType.EAGER)
     private List<Authenticity> roles;
 
+    @ManyToOne
+    private Equipe equipe;
+
     public User(Long id, String pseudo, String password, String nom, String prenom, int telephone, String email, String imageUrl) {
         this.id = id;
         this.pseudo = pseudo;

@@ -32,6 +32,9 @@ public class Equipe {
     @OneToOne
     private User capitain;
 
+    @OneToMany
+    private List<User> joueurs;
+
     public Equipe(){};
 
     public Equipe(String nom , Boolean estExistant){
@@ -125,7 +128,16 @@ public class Equipe {
                 ", domiciles=" + domiciles +
                 ", exterieurs=" + exterieurs +
                 ", capitain=" + capitain +
+                ", joueurs=" + joueurs +
                 '}';
+    }
+
+    public List<User> getJoueurs() {
+        return joueurs;
+    }
+
+    public void setJoueurs(List<User> joueurs) {
+        this.joueurs = joueurs;
     }
 
     public User getCapitain() {
