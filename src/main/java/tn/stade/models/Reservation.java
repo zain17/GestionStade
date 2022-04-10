@@ -20,6 +20,8 @@ public class Reservation {
     @MapsId("exterieurId")
     private Equipe exterieur;
 
+    @OneToOne
+    private User arbitre;
 
     private LocalDateTime dateDebut;
 
@@ -83,6 +85,7 @@ public class Reservation {
                 "id=" + id +
                 ", domicile=" + domicile +
                 ", exterieur=" + exterieur +
+                ", arbitre=" + arbitre +
                 ", dateDebut=" + dateDebut +
                 ", dateFin=" + dateFin +
                 ", miTemps=" + miTemps +
@@ -93,6 +96,14 @@ public class Reservation {
                 ", etat='" + etat + '\'' +
                 ", stade=" + stade +
                 '}';
+    }
+
+    public User getArbitre() {
+        return arbitre;
+    }
+
+    public void setArbitre(User arbitre) {
+        this.arbitre = arbitre;
     }
 
     @Override

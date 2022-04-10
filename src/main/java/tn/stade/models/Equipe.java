@@ -29,12 +29,16 @@ public class Equipe {
     @OneToMany(mappedBy = "exterieur", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> exterieurs = new ArrayList<>();
 
+    @OneToOne
+    private User capitain;
+
     public Equipe(){};
 
     public Equipe(String nom , Boolean estExistant){
         this.nom = nom;
         this.estExistant = estExistant;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -118,9 +122,18 @@ public class Equipe {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", estExistant=" + estExistant +
-                ", domicile=" + domiciles +
-                ", exterieur=" + exterieurs +
+                ", domiciles=" + domiciles +
+                ", exterieurs=" + exterieurs +
+                ", capitain=" + capitain +
                 '}';
+    }
+
+    public User getCapitain() {
+        return capitain;
+    }
+
+    public void setCapitain(User capitain) {
+        this.capitain = capitain;
     }
 
 }
